@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Yardi Support Agent</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    #chatbox { height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+    input, button { padding: 10px; }
+    input { width: 70%; }
+  </style>
+</head>
+<body>
+  <h2>Yardi Support Agent</h2>
+  <div id="chatbox"><p><strong>Ava:</strong> Hi! How can I assist you with Yardi today?</p></div>
+  <input id="userInput" placeholder="Type a message..." />
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    async function sendMessage() {
+      const input = document.getElementById("userInput");
+      const message = input.value.trim();
+      if (!message) return;
+
+      const chatbox = document.getElementById("chatbox");
+      chatbox.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
+
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message })
+      });
+
+      const data = await res.json();
+      chatbox.innerHTML += `<p><strong>Ava:</strong> ${data.reply}</p>`;
+      input.value = "";
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+  </script>
+</body>
+</html>
