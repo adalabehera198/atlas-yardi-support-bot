@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Yardi Support Bot</title>
+</head>
+<body>
+  <h2>Ask the Yardi Support Bot</h2>
+  <form id="chatForm">
+    <textarea id="userMessage" rows="4" cols="50" placeholder="Type your question here..."></textarea><br><br>
+    <button type="submit">Send</button>
+  </form>
+
+  <h3>Response:</h3>
+  <pre id="responseBox"></pre>
+
+  <script>
+    document.getElementById('chatForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const message = document.getElementById('userMessage').value;
+      const responseBox = document.getElementById('responseBox');
+
+      responseBox.textContent = 'Waiting for response...';
+
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message })
+        });
+
+        const data = await res.json();
+        responseBox.textContent = data.reply || JSON.stringify(data);
+      } catch (err) {
+        responseBox.textContent = 'Error: ' + err.message;
+      }
+    });
+  </script>
+</body>
+</html>
