@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>AI Chatbot Demo V2</title>
+  <title>AI Chatbot Demo</title>
   <style>
     body { font-family: Arial; margin: 40px; }
     #chatbox { height: 300px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
@@ -12,7 +12,7 @@
 </head>
 <body>
   <h2>AI Chatbot</h2>
-  <div id="chatbox"><p><strong>Bot:</strong> Hi There! Ask me anything.</p></div>
+  <div id="chatbox"><p><strong>Bot:</strong> Hi! Ask me anything.</p></div>
   <input id="userInput" placeholder="Type a message..." />
   <button onclick="sendMessage()">Send</button>
 
@@ -35,7 +35,7 @@
         const data = await res.json();
         chatbox.innerHTML += `<p><strong>Bot:</strong> ${data.reply}</p>`;
       } catch (err) {
-        chatbox.innerHTML += `<p><strong>Error:</strong> Failed to fetch reply.</p>`;
+        chatbox.innerHTML += `<p><strong>Bot:</strong> Error contacting server.</p>`;
       }
 
       chatbox.scrollTop = chatbox.scrollHeight;
