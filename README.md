@@ -11,9 +11,12 @@ An AI-powered chatbot that acts as a Yardi support assistant. Built for deployme
 
 ## 📁 Project Structure
 
+```
 atlas-yardi-support-bot/
-├── api/             # API route handling (OpenAI, webhook, etc.)
-├── public/          # Static assets
-├── vercel.json      # Vercel configuration
-├── .gitignore       # Ignore files like .env.local
+├── api/           # API route handling (OpenAI, webhook, etc.)
+├── public/        # Static assets
+├── vercel.json    # Vercel configuration
+├── .gitignore     # Ignore files like .env.local
 └── README.md
+```
+
