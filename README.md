@@ -10,3 +10,8 @@ An AI-powered chatbot that acts as a Yardi support assistant. Built for deployme
 - `.env.local` excluded from repo for secure environment management
 
 ## 📁 Project Structure
+├── api/ # API route handling (OpenAI, webhook, etc.)
+├── public/ # Static assets
+├── vercel.json # Vercel configuration
+├── .gitignore # Ignore files like .env.local
+└── README.md
