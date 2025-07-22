@@ -1,0 +1,11 @@
+openai>=1.0.0
+langchain>=0.1.14
+langchain-community
+langchain-openai
+# Removed langchain-pinecone since we're not using deprecated wrapper
+pinecone>=3.0.0
+python-dotenv>=1.0.0
+unstructured[docx]           # ✅ Enables parsing of .docx files
+docx2txt                     # Optional, used in other loaders
+pypdf                        # Optional, used for PDF support
+protobuf>=3.19.0,<4.0.0      # ✅ Keeps gRPC compatibility stable
